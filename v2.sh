@@ -43,7 +43,6 @@ i[36]86)
 *)
 	echo -e " 
 	哈哈……这个 ${red}辣鸡脚本${none} 不支持你的系统。 ${yellow}(-_-) ${none}
-
 	备注: 仅支持 Ubuntu 16+ / Debian 8+ / CentOS 7+ 系统
 	" && exit 1
 	;;
@@ -62,7 +61,6 @@ else
 
 	echo -e " 
 	哈哈……这个 ${red}辣鸡脚本${none} 不支持你的系统。 ${yellow}(-_-) ${none}
-
 	备注: 仅支持 Ubuntu 16+ / Debian 8+ / CentOS 7+ 系统
 	" && exit 1
 
@@ -382,13 +380,10 @@ tls_config() {
 }
 auto_tls_config() {
 	echo -e "
-
 		安装 Caddy 来实现 自动配置 TLS
 		
 		如果你已经安装 Nginx 或 Caddy
-
 		$yellow并且..自己能搞定配置 TLS$none
-
 		那么就不需要 打开自动配置 TLS
 		"
 	echo "----------------------------------------------------------------"
@@ -802,7 +797,7 @@ install_v2ray() {
 		cp -rf $(pwd)/* /etc/v2ray/233boy/v2ray
 	else
 		pushd /tmp
-		git clone https://github.com/233boy/v2ray -b "$_gitbranch" /etc/v2ray/233boy/v2ray --depth=1
+		git clone https://github.com/veip007/v2ray -b "$_gitbranch" /etc/v2ray/233boy/v2ray --depth=1
 		popd
 
 	fi
@@ -886,7 +881,9 @@ get_ip() {
 	[[ -z $ip ]] && ip=$(curl -s https://api.myip.com | grep -oE "([0-9]{1,3}\.){3}[0-9]{1,3}")
 	[[ -z $ip ]] && ip=$(curl -s icanhazip.com)
 	[[ -z $ip ]] && ip=$(curl -s myip.ipip.net | grep -oE "([0-9]{1,3}\.){3}[0-9]{1,3}")
-	[[ -z $ip ]] && echo -e "\n$red 这垃圾小鸡扔了吧！$none\n" && exit
+	[[ -z $ip ]] && echo -e "\n$red 您小鸡未安装Curl！
+	Debian、Ubuntu系统请使用命令:apt-get install curl
+	centos系统使用:yum -y install curl $none\n" && exit
 }
 
 error() {
@@ -976,7 +973,6 @@ uninstall() {
 	else
 		echo -e "
 		$red 大胸弟...你貌似毛有安装 V2Ray ....卸载个鸡鸡哦...$none
-
 		备注...仅支持卸载使用我 (233v2.com) 提供的 V2Ray 一键安装脚本
 		" && exit 1
 	fi
